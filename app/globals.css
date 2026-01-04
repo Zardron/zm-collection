@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Luxury Palette - Primary Black Theme */
+  --primary-black: #0B0B0B;
+  --rich-gold: #D4AF37;
+  --champagne-gold: #E6C77A;
+  --dark-charcoal: #1A1A1A;
+  --ivory-white: #F5F3EE;
+  
+  /* Default to dark luxury theme */
+  --background: var(--primary-black);
+  --foreground: var(--ivory-white);
+  --card-bg: var(--dark-charcoal);
+  --accent: var(--rich-gold);
+  --accent-hover: var(--champagne-gold);
+  --border: var(--champagne-gold);
+}
+
+:root.light {
+  --background: var(--ivory-white);
+  --foreground: var(--primary-black);
+  --card-bg: #ffffff;
+  --accent: var(--rich-gold);
+  --accent-hover: var(--champagne-gold);
+  --border: var(--champagne-gold);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card-bg: var(--card-bg);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
