@@ -2,12 +2,17 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
+import { useCart } from '../contexts/CartContext';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
+  const { getTotalItems } = useCart();
+  const cartCount = getTotalItems();
 
   return (
     <nav className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl shadow-lg transition-colors duration-300 ${
@@ -41,47 +46,77 @@ export default function Navbar() {
             <Link
               href="/"
               className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                theme === 'dark' ? 'text-[#F5F3EE]' : 'text-[#0B0B0B]'
+                pathname === '/'
+                  ? 'text-[#D4AF37]'
+                  : theme === 'dark' 
+                    ? 'text-[#F5F3EE]' 
+                    : 'text-[#0B0B0B]'
               }`}
             >
               Home
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 group-hover:w-full"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
+                pathname === '/' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </Link>
             <Link
               href="/products"
               className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                theme === 'dark' ? 'text-[#F5F3EE]' : 'text-[#0B0B0B]'
+                pathname.startsWith('/products')
+                  ? 'text-[#D4AF37]'
+                  : theme === 'dark' 
+                    ? 'text-[#F5F3EE]' 
+                    : 'text-[#0B0B0B]'
               }`}
             >
               Products
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 group-hover:w-full"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
+                pathname.startsWith('/products') ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </Link>
             <Link
               href="/collections"
               className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                theme === 'dark' ? 'text-[#F5F3EE]' : 'text-[#0B0B0B]'
+                pathname.startsWith('/collections')
+                  ? 'text-[#D4AF37]'
+                  : theme === 'dark' 
+                    ? 'text-[#F5F3EE]' 
+                    : 'text-[#0B0B0B]'
               }`}
             >
               Collections
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 group-hover:w-full"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
+                pathname.startsWith('/collections') ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </Link>
             <Link
               href="/about"
               className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                theme === 'dark' ? 'text-[#F5F3EE]' : 'text-[#0B0B0B]'
+                pathname === '/about'
+                  ? 'text-[#D4AF37]'
+                  : theme === 'dark' 
+                    ? 'text-[#F5F3EE]' 
+                    : 'text-[#0B0B0B]'
               }`}
             >
               About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 group-hover:w-full"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
+                pathname === '/about' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </Link>
             <Link
               href="/contact"
               className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                theme === 'dark' ? 'text-[#F5F3EE]' : 'text-[#0B0B0B]'
+                pathname === '/contact'
+                  ? 'text-[#D4AF37]'
+                  : theme === 'dark' 
+                    ? 'text-[#F5F3EE]' 
+                    : 'text-[#0B0B0B]'
               }`}
             >
               Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 group-hover:w-full"></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
+                pathname === '/contact' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}></span>
             </Link>
           </div>
 
@@ -201,11 +236,13 @@ export default function Navbar() {
                 />
               </svg>
               {/* Cart badge */}
-              <span className={`absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] text-[10px] font-bold shadow-lg ring-2 ${
-                theme === 'dark' ? 'text-[#0B0B0B] ring-[#0B0B0B]' : 'text-[#0B0B0B] ring-[#F5F3EE]'
-              }`}>
-                0
-              </span>
+              {cartCount > 0 && (
+                <span className={`absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] text-[10px] font-bold shadow-lg ring-2 ${
+                  theme === 'dark' ? 'text-[#0B0B0B] ring-[#0B0B0B]' : 'text-[#0B0B0B] ring-[#F5F3EE]'
+                }`}>
+                  {cartCount > 99 ? '99+' : cartCount}
+                </span>
+              )}
             </Link>
 
             {/* Mobile menu button */}
@@ -260,9 +297,11 @@ export default function Navbar() {
               <Link
                 href="/"
                 className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  theme === 'dark' 
-                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  pathname === '/'
+                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                    : theme === 'dark' 
+                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
+                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -271,9 +310,11 @@ export default function Navbar() {
               <Link
                 href="/products"
                 className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  theme === 'dark' 
-                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  pathname.startsWith('/products')
+                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                    : theme === 'dark' 
+                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
+                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -282,9 +323,11 @@ export default function Navbar() {
               <Link
                 href="/collections"
                 className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  theme === 'dark' 
-                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  pathname.startsWith('/collections')
+                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                    : theme === 'dark' 
+                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
+                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -293,9 +336,11 @@ export default function Navbar() {
               <Link
                 href="/about"
                 className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  theme === 'dark' 
-                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  pathname === '/about'
+                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                    : theme === 'dark' 
+                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
+                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -304,9 +349,11 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  theme === 'dark' 
-                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  pathname === '/contact'
+                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                    : theme === 'dark' 
+                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
+                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
