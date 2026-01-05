@@ -11,7 +11,7 @@ import { Textarea } from "@/app/components/ui/textarea";
 import { Switch } from "@/app/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
-import { ArrowLeft, Save, ImagePlus, Trash2, X } from "lucide-react";
+import { ArrowLeft, Save, ImagePlus, Trash2, X, ExternalLink, Pencil } from "lucide-react";
 import { allCollections } from "@/app/data/collections";
 
 // Group products by category to create collections
@@ -189,10 +189,11 @@ export default function EditCollectionPage() {
               </CardHeader>
               <CardContent>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {collection.products.slice(0, 6).map((product) => (
-                    <div
+                  {collection.products.map((product) => (
+                    <Link
                       key={product.id}
-                      className="flex items-center gap-3 rounded-lg border border-[var(--border)]/10 p-3 hover:bg-[var(--accent)]/5 transition-colors"
+                      href={`/admin/products/${product.id}`}
+                      className="flex items-center gap-3 rounded-lg border border-[var(--border)]/10 p-3 hover:bg-[var(--accent)]/5 hover:border-[var(--accent)]/30 transition-colors group"
                     >
                       <div className="relative h-12 w-12 overflow-hidden rounded-lg bg-[var(--card-bg)]">
                         <Image
@@ -203,27 +204,33 @@ export default function EditCollectionPage() {
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-[var(--foreground)] truncate">
+                        <p className="font-medium text-[var(--foreground)] truncate group-hover:text-[var(--accent)] transition-colors">
                           {product.name}
                         </p>
                         <p className="text-sm text-[var(--accent)]">
                           {product.price}
                         </p>
                       </div>
-                      <Button variant="ghost" size="icon">
-                        <X className="h-4 w-4 text-[var(--foreground)]/50" />
-                      </Button>
-                    </div>
+                      <div className="flex items-center gap-1">
+                        <span className="text-xs text-[var(--foreground)]/40 group-hover:text-[var(--accent)] transition-colors">
+                          <Pencil className="h-4 w-4" />
+                        </span>
+                      </div>
+                    </Link>
                   ))}
                 </div>
-                {collection.products.length > 6 && (
-                  <p className="mt-4 text-center text-sm text-[var(--foreground)]/60">
-                    And {collection.products.length - 6} more products...
-                  </p>
-                )}
-                <Button variant="outline" className="w-full mt-4">
-                  Manage Products
-                </Button>
+                <div className="flex gap-2 mt-4">
+                  <Button variant="outline" className="flex-1" asChild>
+                    <Link href={`/admin/products?category=${encodeURIComponent(collection.name)}`}>
+                      Manage Products
+                    </Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link href={`/collections/${collectionId}`} target="_blank">
+                      <ExternalLink className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
