@@ -130,13 +130,12 @@ export default function ProductPage() {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all ${
-                      selectedImage === index
-                        ? 'border-[#D4AF37] ring-2 ring-[#D4AF37]/50'
-                        : theme === 'dark'
+                    className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all ${selectedImage === index
+                      ? 'border-[#D4AF37] ring-2 ring-[#D4AF37]/50'
+                      : theme === 'dark'
                         ? 'border-[#2A2A2A] hover:border-[#D4AF37]/50'
                         : 'border-gray-200 hover:border-[#D4AF37]/50'
-                    }`}
+                      }`}
                   >
                     <div className={`absolute inset-0 flex items-center justify-center p-2 ${theme === 'dark' ? 'bg-[#0F0F0F]' : 'bg-gray-50'}`}>
                       <Image
@@ -239,6 +238,18 @@ export default function ProductPage() {
               </div>
             )}
 
+            {/* Ingredients (if available) */}
+            {product.ingredients && product.ingredients.length > 0 && (
+              <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-[#1A1A1A] border border-[#2A2A2A]' : 'bg-white border border-gray-200'}`}>
+                <h2 className={`text-lg font-bold mb-3 ${theme === 'dark' ? 'text-[#F5F3EE]' : 'text-[#0B0B0B]'}`}>
+                  Ingredients
+                </h2>
+                <p className={`text-sm leading-relaxed ${theme === 'dark' ? 'text-[#F5F3EE]/70' : 'text-[#0B0B0B]/70'}`}>
+                  {product.ingredients.join(', ')}
+                </p>
+              </div>
+            )}
+
             {/* Size/Details */}
             {product.size && (
               <div className={`p-4 rounded-xl ${theme === 'dark' ? 'bg-[#1A1A1A] border border-[#2A2A2A]' : 'bg-white border border-gray-200'}`}>
@@ -298,13 +309,12 @@ export default function ProductPage() {
               <button
                 onClick={handleAddToCart}
                 disabled={isAdding || !product.inStock}
-                className={`w-full py-5 px-6 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 ${
-                  isAdding
-                    ? 'bg-green-500 text-white scale-[0.98]'
-                    : product.inStock
+                className={`w-full py-5 px-6 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 ${isAdding
+                  ? 'bg-green-500 text-white scale-[0.98]'
+                  : product.inStock
                     ? 'bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] text-[#0B0B0B] hover:scale-[1.02] hover:shadow-xl hover:shadow-[#D4AF37]/40'
                     : 'bg-gray-400 text-white cursor-not-allowed'
-                } disabled:opacity-70 disabled:cursor-not-allowed`}
+                  } disabled:opacity-70 disabled:cursor-not-allowed`}
               >
                 {isAdding ? (
                   <>
@@ -324,17 +334,6 @@ export default function ProductPage() {
               </button>
             </div>
 
-            {/* Ingredients (if available) */}
-            {product.ingredients && product.ingredients.length > 0 && (
-              <div className={`p-6 rounded-xl ${theme === 'dark' ? 'bg-[#1A1A1A] border border-[#2A2A2A]' : 'bg-white border border-gray-200'}`}>
-                <h2 className={`text-lg font-bold mb-3 ${theme === 'dark' ? 'text-[#F5F3EE]' : 'text-[#0B0B0B]'}`}>
-                  Ingredients
-                </h2>
-                <p className={`text-sm leading-relaxed ${theme === 'dark' ? 'text-[#F5F3EE]/70' : 'text-[#0B0B0B]/70'}`}>
-                  {product.ingredients.join(', ')}
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </section>
