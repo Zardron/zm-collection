@@ -13,7 +13,8 @@ export interface MenuItem {
   title: string;
   href: string;
   icon: LucideIcon;
-  badge?: string;
+  badge?: string | number;
+  badgeVariant?: "default" | "warning" | "success";
   submenu?: MenuItem[];
 }
 
@@ -22,63 +23,74 @@ export interface MenuSection {
   items: MenuItem[];
 }
 
-export const adminMenu: MenuSection[] = [
-  {
-    items: [
-      {
-        title: "Dashboard",
-        href: "/admin",
-        icon: LayoutDashboard,
-      },
-    ],
-  },
-  {
-    title: "Catalog",
-    items: [
-      {
-        title: "Products",
-        href: "/admin/products",
-        icon: Package,
-        badge: "11",
-      },
-      {
-        title: "Collections",
-        href: "/admin/collections",
-        icon: FolderOpen,
-        badge: "20",
-      },
-    ],
-  },
-  {
-    title: "Sales",
-    items: [
-      {
-        title: "Orders",
-        href: "/admin/orders",
-        icon: ShoppingCart,
-        badge: "5",
-      },
-      {
-        title: "Customers",
-        href: "/admin/customers",
-        icon: Users,
-      },
-      {
-        title: "Analytics",
-        href: "/admin/analytics",
-        icon: BarChart3,
-      },
-    ],
-  },
-  {
-    title: "Settings",
-    items: [
-      {
-        title: "Settings",
-        href: "/admin/settings",
-        icon: Settings,
-      },
-    ],
-  },
-];
+// Function to create admin menu with dynamic counts
+export function createAdminMenu(counts?: {
+  products?: number;
+  collections?: number;
+  orders?: number;
+  pendingOrders?: number;
+}): MenuSection[] {
+  return [
+    {
+      items: [
+        {
+          title: "Dashboard",
+          href: "/admin",
+          icon: LayoutDashboard,
+        },
+      ],
+    },
+    {
+      title: "Catalog",
+      items: [
+        {
+          title: "Products",
+          href: "/admin/products",
+          icon: Package,
+          badge: counts?.products ?? 11,
+        },
+        {
+          title: "Collections",
+          href: "/admin/collections",
+          icon: FolderOpen,
+          badge: counts?.collections ?? 6,
+        },
+      ],
+    },
+    {
+      title: "Sales",
+      items: [
+        {
+          title: "Orders",
+          href: "/admin/orders",
+          icon: ShoppingCart,
+          badge: counts?.pendingOrders ?? 5,
+          badgeVariant: (counts?.pendingOrders ?? 5) > 0 ? "warning" : "default",
+        },
+        {
+          title: "Customers",
+          href: "/admin/customers",
+          icon: Users,
+        },
+        {
+          title: "Analytics",
+          href: "/admin/analytics",
+          icon: BarChart3,
+        },
+      ],
+    },
+    {
+      title: "Settings",
+      items: [
+        {
+          title: "Settings",
+          href: "/admin/settings",
+          icon: Settings,
+        },
+      ],
+    },
+  ];
+}
 
+// Default menu for static imports
+export const adminMenu: MenuSection[] = createAdminMenu();
