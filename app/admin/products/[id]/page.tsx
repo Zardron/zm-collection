@@ -19,12 +19,20 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { ArrowLeft, Save, ImagePlus, X, Trash2 } from "lucide-react";
 import { getProductDetails } from "@/app/data/products";
+import { getCollectionDetails } from "@/app/data/collections";
 
 export default function EditProductPage() {
   const router = useRouter();
   const params = useParams();
   const productId = Number(params.id);
-  const product = getProductDetails(productId);
+  
+  // Try to get product from regular products first, then from collections
+  const regularProduct = getProductDetails(productId);
+  const collectionProduct = getCollectionDetails(productId);
+  const product = regularProduct || collectionProduct;
+  
+  // Determine if this is a collection product (ID >= 100)
+  const isCollectionProduct = productId >= 100 && collectionProduct;
 
   const [isActive, setIsActive] = React.useState(true);
   const [images, setImages] = React.useState<string[]>(
@@ -61,14 +69,25 @@ export default function EditProductPage() {
     }
   };
 
-  const categories = [
+  // Categories based on product type
+  const beautyCategories = [
     "Lip Tint",
     "Perfume",
     "Serum",
     "Makeup",
     "Skincare",
+  ];
+  
+  const fashionCategories = [
+    "Men's T-Shirt",
+    "Men's Shorts",
+    "Men's Pants",
+    "Women's Blouse",
+    "Women's Dress",
     "Accessories",
   ];
+  
+  const categories = isCollectionProduct ? fashionCategories : beautyCategories;
 
   // Parse price from string
   const parsePrice = (price: string) => {
