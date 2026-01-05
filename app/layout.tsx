@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { CartProvider } from "./contexts/CartContext";
+import { LayoutWrapper } from "./components/LayoutWrapper";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -29,9 +28,9 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <CartProvider>
-            <Navbar />
-            {children}
-            <Footer />
+            <LayoutWrapper>
+              {children}
+            </LayoutWrapper>
           </CartProvider>
         </ThemeProvider>
       </body>
