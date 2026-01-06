@@ -11,9 +11,9 @@ const collectionImages: Record<string, string[]> = {
     'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=800&fit=crop',
   ],
   "Men's Shorts": [
-    'https://images.unsplash.com/photo-1591195853828-11b59e3b3c02?w=800&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&h=800&fit=crop',
-    'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=800&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1552902875-9ac1f9fe0c07?w=800&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800&h=800&fit=crop',
   ],
   "Women's Blouse": [
     'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=800&h=800&fit=crop',
