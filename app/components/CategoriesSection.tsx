@@ -10,7 +10,7 @@ import { allProducts } from '../data/products';
 // Collection category images
 const collectionCategoryImages: Record<string, string> = {
   "Men's T-Shirt": 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=600&fit=crop',
-  "Men's Shorts": 'https://images.unsplash.com/photo-1591195853828-11b59e3b3c02?w=600&h=600&fit=crop',
+  "Men's Shorts": 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=600&h=600&fit=crop',
   "Women's Blouse": 'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&h=600&fit=crop',
   "Women's Dress": 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=600&fit=crop',
   "Men's Pants": 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&h=600&fit=crop',
@@ -48,7 +48,7 @@ export default function CategoriesSection() {
   // Get unique collection categories with counts
   const collectionCategories = useMemo(() => {
     const categoryMap = new Map<string, number>();
-    
+
     allCollections.forEach(collection => {
       if (collection.category) {
         const count = categoryMap.get(collection.category) || 0;
@@ -69,7 +69,7 @@ export default function CategoriesSection() {
   // Get unique product categories with counts
   const productCategories = useMemo(() => {
     const categoryMap = new Map<string, number>();
-    
+
     allProducts.forEach(product => {
       if (product.category) {
         const count = categoryMap.get(product.category) || 0;
@@ -116,30 +116,28 @@ export default function CategoriesSection() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
             </span>
           </div>
-          
+
           {/* Toggle Switch */}
           <div className="flex items-center justify-center gap-4 mb-6">
             <button
               onClick={() => setShowCollections(false)}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                !showCollections
+              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${!showCollections
                   ? `bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] text-[#0B0B0B] shadow-lg`
                   : theme === 'dark'
                     ? 'bg-[#1A1A1A] border border-[#2A2A2A] text-[#F5F3EE]/60 hover:text-[#F5F3EE] hover:border-[#D4AF37]/50'
                     : 'bg-white border border-gray-200 text-[#0B0B0B]/60 hover:text-[#0B0B0B] hover:border-[#D4AF37]/50'
-              }`}
+                }`}
             >
               Products
             </button>
             <button
               onClick={() => setShowCollections(true)}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                showCollections
+              className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${showCollections
                   ? `bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] text-[#0B0B0B] shadow-lg`
                   : theme === 'dark'
                     ? 'bg-[#1A1A1A] border border-[#2A2A2A] text-[#F5F3EE]/60 hover:text-[#F5F3EE] hover:border-[#D4AF37]/50'
                     : 'bg-white border border-gray-200 text-[#0B0B0B]/60 hover:text-[#0B0B0B] hover:border-[#D4AF37]/50'
-              }`}
+                }`}
             >
               Collections
             </button>
@@ -186,7 +184,7 @@ export default function CategoriesSection() {
                   ? 'from-[#0B0B0B]/60 via-[#0F0F0F]/70 to-[#1A1A1A]/80'
                   : 'from-white/40 via-[#F5F3EE]/60 to-white/80'
                   }`}></div>
-                
+
                 {/* Shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 via-transparent to-[#E6C77A]/10 pointer-events-none"></div>
               </div>
