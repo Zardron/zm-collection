@@ -15,16 +15,15 @@ export default function Navbar() {
   const cartCount = getTotalItems();
 
   return (
-    <nav className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl shadow-lg transition-colors duration-300 ${
-      theme === 'dark' 
-        ? 'border-[#E6C77A]/30 bg-[#0B0B0B]/95 supports-[backdrop-filter]:bg-[#0B0B0B]/90 shadow-[#D4AF37]/10'
-        : 'border-[#E6C77A]/50 bg-[#F5F3EE]/95 supports-[backdrop-filter]:bg-[#F5F3EE]/90 shadow-[#D4AF37]/20'
-    }`}>
+    <nav className={`sticky top-0 z-50 w-full border-b backdrop-blur-xl shadow-lg transition-colors duration-300 ${theme === 'dark'
+      ? 'border-[#E6C77A]/30 bg-[#0B0B0B]/95 supports-[backdrop-filter]:bg-[#0B0B0B]/90 shadow-[#D4AF37]/10'
+      : 'border-[#E6C77A]/50 bg-[#F5F3EE]/95 supports-[backdrop-filter]:bg-[#F5F3EE]/90 shadow-[#D4AF37]/20'
+      }`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="flex items-center space-x-3 group transition-transform hover:scale-105"
           >
             <div className="relative">
@@ -45,78 +44,68 @@ export default function Navbar() {
           <div className="hidden md:flex md:items-center md:space-x-1">
             <Link
               href="/"
-              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                pathname === '/'
-                  ? 'text-[#D4AF37]'
-                  : theme === 'dark' 
-                    ? 'text-[#F5F3EE]' 
-                    : 'text-[#0B0B0B]'
-              }`}
+              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${pathname === '/'
+                ? 'text-[#D4AF37]'
+                : theme === 'dark'
+                  ? 'text-[#F5F3EE]'
+                  : 'text-[#0B0B0B]'
+                }`}
             >
               Home
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
-                pathname === '/' ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${pathname === '/' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
             </Link>
             <Link
               href="/products"
-              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                pathname.startsWith('/products')
-                  ? 'text-[#D4AF37]'
-                  : theme === 'dark' 
-                    ? 'text-[#F5F3EE]' 
-                    : 'text-[#0B0B0B]'
-              }`}
+              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${pathname.startsWith('/products')
+                ? 'text-[#D4AF37]'
+                : theme === 'dark'
+                  ? 'text-[#F5F3EE]'
+                  : 'text-[#0B0B0B]'
+                }`}
             >
               Products
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
-                pathname.startsWith('/products') ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${pathname.startsWith('/products') ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
             </Link>
             <Link
               href="/collections"
-              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                pathname.startsWith('/collections')
-                  ? 'text-[#D4AF37]'
-                  : theme === 'dark' 
-                    ? 'text-[#F5F3EE]' 
-                    : 'text-[#0B0B0B]'
-              }`}
+              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${pathname.startsWith('/collections')
+                ? 'text-[#D4AF37]'
+                : theme === 'dark'
+                  ? 'text-[#F5F3EE]'
+                  : 'text-[#0B0B0B]'
+                }`}
             >
               Collections
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
-                pathname.startsWith('/collections') ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${pathname.startsWith('/collections') ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
             </Link>
             <Link
               href="/about"
-              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                pathname === '/about'
-                  ? 'text-[#D4AF37]'
-                  : theme === 'dark' 
-                    ? 'text-[#F5F3EE]' 
-                    : 'text-[#0B0B0B]'
-              }`}
+              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${pathname === '/about'
+                ? 'text-[#D4AF37]'
+                : theme === 'dark'
+                  ? 'text-[#F5F3EE]'
+                  : 'text-[#0B0B0B]'
+                }`}
             >
               About
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
-                pathname === '/about' ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${pathname === '/about' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
             </Link>
             <Link
               href="/contact"
-              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${
-                pathname === '/contact'
-                  ? 'text-[#D4AF37]'
-                  : theme === 'dark' 
-                    ? 'text-[#F5F3EE]' 
-                    : 'text-[#0B0B0B]'
-              }`}
+              className={`relative px-4 py-2 text-sm font-semibold transition-all duration-200 hover:text-[#D4AF37] group ${pathname === '/contact'
+                ? 'text-[#D4AF37]'
+                : theme === 'dark'
+                  ? 'text-[#F5F3EE]'
+                  : 'text-[#0B0B0B]'
+                }`}
             >
               Contact
-              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${
-                pathname === '/contact' ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}></span>
+              <span className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] transition-all duration-200 ${pathname === '/contact' ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
             </Link>
           </div>
 
@@ -124,11 +113,10 @@ export default function Navbar() {
           <div className="flex items-center space-x-2">
             {/* Search Icon */}
             <button
-              className={`hidden sm:flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] hover:scale-110 ${
-                theme === 'dark' 
-                  ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                  : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-              }`}
+              className={`hidden sm:flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] hover:scale-110 ${theme === 'dark'
+                ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                }`}
               aria-label="Search"
             >
               <svg
@@ -149,11 +137,10 @@ export default function Navbar() {
             {/* Theme Switcher */}
             <button
               onClick={toggleTheme}
-              className={`flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] hover:scale-110 ${
-                theme === 'dark' 
-                  ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                  : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-              }`}
+              className={`flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] hover:scale-110 ${theme === 'dark'
+                ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                }`}
               aria-label="Toggle theme"
             >
               {theme === 'light' ? (
@@ -189,13 +176,12 @@ export default function Navbar() {
 
             {/* Account Icon */}
             <Link
-              href="/account"
-              className={`flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] hover:scale-110 ${
-                theme === 'dark' 
-                  ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                  : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-              }`}
-              aria-label="Account"
+              href="/auth/signin"
+              className={`flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] hover:scale-110 ${theme === 'dark'
+                ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                }`}
+              aria-label="Sign In"
             >
               <svg
                 className="h-5 w-5"
@@ -215,11 +201,10 @@ export default function Navbar() {
             {/* Shopping Cart Icon */}
             <Link
               href="/cart"
-              className={`relative flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] hover:scale-110 ${
-                theme === 'dark' 
-                  ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                  : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-              }`}
+              className={`relative flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] hover:scale-110 ${theme === 'dark'
+                ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                }`}
               aria-label="Shopping Cart"
             >
               <svg
@@ -237,9 +222,8 @@ export default function Navbar() {
               </svg>
               {/* Cart badge */}
               {cartCount > 0 && (
-                <span className={`absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] text-[10px] font-bold shadow-lg ring-2 ${
-                  theme === 'dark' ? 'text-[#0B0B0B] ring-[#0B0B0B]' : 'text-[#0B0B0B] ring-[#F5F3EE]'
-                }`}>
+                <span className={`absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-[#D4AF37] to-[#E6C77A] text-[10px] font-bold shadow-lg ring-2 ${theme === 'dark' ? 'text-[#0B0B0B] ring-[#0B0B0B]' : 'text-[#0B0B0B] ring-[#F5F3EE]'
+                  }`}>
                   {cartCount > 99 ? '99+' : cartCount}
                 </span>
               )}
@@ -247,11 +231,10 @@ export default function Navbar() {
 
             {/* Mobile menu button */}
             <button
-              className={`md:hidden flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] ${
-                theme === 'dark' 
-                  ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                  : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-              }`}
+              className={`md:hidden flex items-center justify-center p-2.5 rounded-lg transition-all duration-200 hover:text-[#D4AF37] ${theme === 'dark'
+                ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                }`}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -290,71 +273,65 @@ export default function Navbar() {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className={`md:hidden border-t animate-in slide-in-from-top-2 duration-200 ${
-            theme === 'dark' ? 'border-[#E6C77A]/30' : 'border-[#E6C77A]/50'
-          }`}>
+          <div className={`md:hidden border-t animate-in slide-in-from-top-2 duration-200 ${theme === 'dark' ? 'border-[#E6C77A]/30' : 'border-[#E6C77A]/50'
+            }`}>
             <div className="space-y-1 px-2 pb-4 pt-3">
               <Link
                 href="/"
-                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  pathname === '/'
-                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
-                    : theme === 'dark' 
-                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-                }`}
+                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${pathname === '/'
+                  ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                  : theme === 'dark'
+                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
                 href="/products"
-                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  pathname.startsWith('/products')
-                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
-                    : theme === 'dark' 
-                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-                }`}
+                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${pathname.startsWith('/products')
+                  ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                  : theme === 'dark'
+                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </Link>
               <Link
                 href="/collections"
-                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  pathname.startsWith('/collections')
-                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
-                    : theme === 'dark' 
-                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-                }`}
+                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${pathname.startsWith('/collections')
+                  ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                  : theme === 'dark'
+                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Collections
               </Link>
               <Link
                 href="/about"
-                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  pathname === '/about'
-                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
-                    : theme === 'dark' 
-                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-                }`}
+                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${pathname === '/about'
+                  ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                  : theme === 'dark'
+                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/contact"
-                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${
-                  pathname === '/contact'
-                    ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
-                    : theme === 'dark' 
-                      ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]' 
-                      : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
-                }`}
+                className={`block rounded-lg px-4 py-3 text-base font-semibold transition-all duration-200 hover:text-[#D4AF37] hover:translate-x-1 ${pathname === '/contact'
+                  ? 'text-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-[#E6C77A]/10'
+                  : theme === 'dark'
+                    ? 'text-[#F5F3EE] hover:bg-[#1A1A1A]'
+                    : 'text-[#0B0B0B] hover:bg-[#E6C77A]/20'
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
