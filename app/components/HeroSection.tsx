@@ -8,11 +8,11 @@ export default function HeroSection() {
   const { theme } = useTheme();
 
   return (
-    <section className={`relative overflow-hidden h-screen flex items-center ${theme === 'dark'
+    <section className={`relative overflow-hidden flex items-center ${theme === 'dark'
       ? 'bg-gradient-to-b from-[#0B0B0B] via-[#0F0F0F] to-[#0B0B0B]'
       : 'bg-gradient-to-b from-[#F5F3EE] via-white to-[#F5F3EE]'
       }`}
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: '92vh' }}
     >
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -22,7 +22,7 @@ export default function HeroSection() {
           }`}></div>
       </div>
 
-      <div className="relative w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16 " style={{ minHeight: '100%' }}>
+      <div className="relative w-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-center">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center w-full">
           {/* Hero Content */}
           <div className="space-y-4 md:space-y-5 text-center lg:text-left">
