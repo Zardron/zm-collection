@@ -201,6 +201,100 @@ Potential improvements for the platform:
 - [ ] Shipping integration
 - [ ] Analytics integration (Google Analytics, etc.)
 
+## 🚀 Deployment
+
+### Deploying to Vercel
+
+This project is optimized for deployment on [Vercel](https://vercel.com), the platform created by the Next.js team.
+
+#### Option 1: Deploy via Vercel Dashboard (Recommended)
+
+1. **Push your code to GitHub/GitLab/Bitbucket**
+   - Make sure your project is in a Git repository
+   - Push all changes to your remote repository
+
+2. **Import your project to Vercel**
+   - Go to [vercel.com](https://vercel.com) and sign in (or create an account)
+   - Click "Add New..." → "Project"
+   - Import your Git repository
+   - Vercel will automatically detect Next.js and configure the project
+
+3. **Configure build settings** (usually auto-detected)
+   - Framework Preset: Next.js
+   - Build Command: `npm run build`
+   - Output Directory: `.next` (auto-detected)
+   - Install Command: `npm install`
+
+4. **Deploy**
+   - Click "Deploy"
+   - Wait for the build to complete
+   - Your site will be live at `https://your-project-name.vercel.app`
+
+#### Option 2: Deploy via Vercel CLI
+
+1. **Install Vercel CLI**
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Login to Vercel**
+   ```bash
+   vercel login
+   ```
+
+3. **Deploy**
+   ```bash
+   vercel
+   ```
+   - Follow the prompts to link your project
+   - For production deployment, run: `vercel --prod`
+
+#### Environment Variables
+
+If you need to add environment variables:
+- Go to your project settings on Vercel
+- Navigate to "Environment Variables"
+- Add any required variables (e.g., API keys, database URLs)
+
+#### Custom Domain
+
+1. Go to your project settings on Vercel
+2. Navigate to "Domains"
+3. Add your custom domain
+4. Follow the DNS configuration instructions
+
+#### Build Configuration
+
+The project includes a `vercel.json` file with optimized settings:
+- Build command: `npm run build`
+- Framework: Next.js (auto-detected)
+- Region: US East (iad1)
+
+### Pre-Deployment Checklist
+
+- [ ] Ensure all dependencies are listed in `package.json`
+- [ ] Test the production build locally: `npm run build && npm start`
+- [ ] Verify all images and assets are accessible
+- [ ] Check that environment variables are configured (if needed)
+- [ ] Ensure TypeScript compilation passes: `npm run build`
+- [ ] Test all critical user flows
+
+### Troubleshooting
+
+**Build fails:**
+- Check the build logs in Vercel dashboard
+- Ensure all TypeScript errors are resolved
+- Verify all dependencies are correctly installed
+
+**Images not loading:**
+- Check `next.config.ts` for correct image domain configurations
+- Ensure Unsplash images are accessible
+- Verify public folder assets are committed to Git
+
+**TypeScript errors:**
+- Run `npm run build` locally to catch errors before deploying
+- Ensure `tsconfig.json` is properly configured
+
 ## 📄 License
 
 This project is private and proprietary.
