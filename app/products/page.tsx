@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTheme } from '../contexts/ThemeContext';
 import { allProducts } from '../data/products';
@@ -9,7 +9,7 @@ import ProductCard from '../components/ProductCard';
 
 type SortOption = 'default' | 'price-low' | 'price-high' | 'rating' | 'newest' | 'reviews';
 
-export default function ProductsPage() {
+function ProductsContent() {
   const { theme } = useTheme();
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category');
@@ -366,3 +366,21 @@ export default function ProductsPage() {
     </div>
   );
 }
+
+const ProductsPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-[#0B0B0B]">
+          <div className="text-center">
+            <div className="text-[#D4AF37] text-xl font-semibold">Loading products...</div>
+          </div>
+        </div>
+      }
+    >
+      <ProductsContent />
+    </Suspense>
+  );
+};
+
+export default ProductsPage;
