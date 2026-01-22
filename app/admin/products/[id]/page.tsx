@@ -370,7 +370,7 @@ export default function EditProductPage() {
                 <div className="flex justify-between">
                   <span className="text-[var(--foreground)]/60">Size</span>
                   <span className="text-[var(--foreground)]">
-                    {product.size || "N/A"}
+                    {regularProduct?.size || (collectionProduct?.sizes ? collectionProduct.sizes.join(", ") : "N/A")}
                   </span>
                 </div>
                 <div className="flex justify-between">
